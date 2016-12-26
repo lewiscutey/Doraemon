@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哆啦A梦</title>
+    <style>
+        .scene{
+            width:500px;
+            height: 500px;
+            text-align: center;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .head{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 45%/45%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: linear-gradient(30deg,#0EAAD2,#37CAEE);
+            box-shadow: -10px 10px 30px #969696;
+        }
+        .mouth{
+            width: 240px;
+            height:200px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border: 1px solid black;
+            background-color: #FFFFFF;
+            border-radius: 60%/60%;
+        }
+        .eyes{
+            width: 150px;
+            height:100px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .eyes .le{
+            width: 75px;
+            height:90px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid black;
+            background-color: #FFFFFF;
+            border-radius: 45%/40%;
+        }
+        .eyes .le .eyeball{
+            width: 20px;
+            height: 20px;
+            background-color: #000000;
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            border-radius: 55%;
+            animation: eyesmove 2s ease infinite;
+        }
+        .eyes .re{
+            width: 75px;
+            height:90px;
+            position: absolute;
+            top: 0;
+            left: 75px;
+            border: 1px solid black;
+            background-color: #FFFFFF;
+            border-radius: 45%/40%;
+        }
+        .eyes .re .eyeball{
+            width: 20px;
+            height: 20px;
+            background-color: #000000;
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            border-radius: 55%;
+            animation: eyesmove 2s ease infinite;
+        }
+        @keyframes eyesmove
+        {
+            0% {
+                bottom:10px;
+            }
+            50%{
+                bottom:50px;
+            }
+            100%{
+                bottom:10px;
+            }
+        }
+        .nose{
+            width: 40px;
+            height:40px;
+            position: absolute;
+            top: 130px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border: 1px solid black;
+            background:radial-gradient(circle 10px at 30px 15px,white, #e03c05);
+            border-radius: 50%;
+        }
+        #myCanvas{
+            position: absolute;
+            top:100px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .body{
+            width: 250px;
+            height: 200px;
+            position: absolute;
+            top: 300px;
+            left:0;
+            right:0;
+            margin: auto;
+            background: linear-gradient(to right,#008AB0,#07BEEA);
+            border: 1px solid black;
+        }
+        .belly{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 0;
+            left:0;
+            right:0;
+            margin: auto;
+            background: #FFFFFF;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+        #myCanvas1{
+            position: absolute;
+            top: 0;
+            left:0;
+            right:0;
+            margin: auto;
+            z-index: 3;
+        }
+        #myCanvas2{
+            position: absolute;
+            top: 0;
+            left:0;
+            right:0;
+            margin: auto;
+            z-index: 3;
+        }
+        .neck{
+            width: 250px;
+            height:20px;
+            position: absolute;
+            top: 290px;
+            left:0;
+            right:0;
+            z-index: 1;
+            margin: auto;
+            background: linear-gradient(#C53D00,#860900);
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+        .card{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right:0;
+            margin: auto;
+            background: linear-gradient(#F5ED26,#B8B006);
+            border: 1px solid black;
+            border-radius: 50%;
+            z-index:2;
+        }
+        .arm{
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: -75px;
+            right:0;
+            margin: auto;
+        }
+        .larm{
+            width: 50px;
+            height: 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #0083A6;
+            border: 1px solid black;
+            transform-origin: 35px 95px;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        .larm .hand{
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: 60px;
+            left: -10px;
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 45%;
+        }
+        .rarm{
+            width: 50px;
+            height: 80px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #07BDE9;
+            border: 1px solid black;
+            transform-origin: 15px 95px;
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+        .rarm .hand{
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: 60px;
+            left: -10px;
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 45%;
+        }
+        .foot{
+            width: 300px;
+            height: 30px;
+            position: absolute;
+            top: 490px;
+            left: 100px;
+            margin: auto;
+        }
+        .lfoot{
+            width: 140px;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 20px;
+            z-index: 4;
+        }
+        .rfoot{
+            width: 140px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 20px;
+            z-index:4;
+        }
+        .leg{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: -5px;
+            right: 0;
+            left: 0;
+            margin: auto;
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+        .legs{
+            width: 50px;
+            height: 20px;
+            position: absolute;
+            top: 15px;
+            right: 0;
+            left: 0;
+            margin: auto;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="head">
+        <div class="mouth"></div>
+        <div class="eyes">
+            <div class="le">
+                <div class="eyeball"></div>
+            </div>
+            <div class="re">
+                <div class="eyeball"></div>
+            </div>
+        </div>
+        <div class="nose"></div>
+        <div class="beard">
+            <canvas id="myCanvas" width="300px" height="200px"></canvas>
+        </div>
+    </div>
+    <div class="neck"></div>
+    <div class="body">
+        <div class="belly">
+            <canvas id="myCanvas1" width="150px" height="150px"></canvas>
+            <div class="card"></div>
+        </div>
+        <div class="arm">
+            <canvas id="myCanvas2" width="400px" height="100px"></canvas>
+            <div class="larm">
+                <div class="hand"></div>
+            </div>
+            <div class="rarm">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="lfoot"></div>
+        <div class="rfoot"></div>
+        <div class="leg"></div>
+        <div class="legs"></div>
+    </div>
+</div>
+</body>
+<script>
+    var myCanvas = document.getElementById("myCanvas");
+    var ctx = myCanvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(150,70);
+    ctx.lineTo(150,155);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(150,50,105,Math.PI/4,Math.PI/4*3,false);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(120,80);
+    ctx.lineTo(55,70);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(120,90);
+    ctx.lineTo(50,90);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(120,100);
+    ctx.lineTo(55,110);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(180,80);
+    ctx.lineTo(250,70);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(180,90);
+    ctx.lineTo(250,90);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(180,100);
+    ctx.lineTo(250,110);
+    ctx.closePath();
+    ctx.stroke();
+
+
+    var myCanvas1 = document.getElementById("myCanvas1");
+    var ctxx = myCanvas1.getContext("2d");
+
+    ctxx.beginPath();
+    ctxx.arc(75,75,60,0,Math.PI,false);
+    ctxx.closePath();
+    ctxx.stroke();
+
+    ctxx.beginPath();
+    ctxx.moveTo(52,15);
+    ctxx.lineTo(98,15);
+    ctxx.closePath();
+    ctxx.stroke();
+
+    ctxx.beginPath();
+    ctxx.moveTo(50,20);
+    ctxx.lineTo(100,20);
+    ctxx.closePath();
+    ctxx.stroke();
+
+    ctxx.beginPath();
+    ctxx.arc(75,30,6,0,Math.PI*2,true);
+    ctxx.fill();
+
+    ctxx.beginPath();
+    ctxx.moveTo(75,30);
+    ctxx.lineTo(75,52);
+    ctxx.closePath();
+    ctxx.stroke();
+
+    var myCanvas2 = document.getElementById("myCanvas2");
+    var ctxxx = myCanvas2.getContext("2d");
+    ctxxx.lineWidth=2;
+    ctxxx.beginPath();
+    ctxxx.strokeStyle = "#0083A6";
+    ctxxx.moveTo(75,8);
+    ctxxx.lineTo(75,60);
+    ctxxx.closePath();
+    ctxxx.stroke();
+
+    ctxxx.beginPath();
+    ctxxx.strokeStyle = "#07BDE9";
+    ctxxx.moveTo(325,8);
+    ctxxx.lineTo(325,60);
+    ctxxx.closePath();
+    ctxxx.stroke();
+
+</script>
+</html>
